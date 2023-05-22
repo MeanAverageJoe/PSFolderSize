@@ -34,7 +34,7 @@ function Get-FolderSizes {
 
 # Set the root path of the file server
 # set the share Name for the root
-$rootPath = "\\Blazer\Share"
+$rootPath = "\\ServerName\Share"
 
 # Start calculating folder sizes
 Get-FolderSizes -RootPath $rootPath
