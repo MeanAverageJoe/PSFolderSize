@@ -38,3 +38,20 @@ $rootPath = "\\ServerName\Share"
 
 # Start calculating folder sizes
 Get-FolderSizes -RootPath $rootPath
+
+# Function to get the number of files in a folder and its subfolders
+
+function Get-FileCount {
+    param (
+        [Parameter(Mandatory = $true, Position = 0)]
+        [ValidateScript({Test-Path -Path $_ -PathType 'Container'})]
+        [string]$Path
+    )
+
+    $folder = Get-Item -Path $Path
+    $fileCount = $folder | Get-ChildItem -Recurse -Force |
+        Measure-Object -Property Length |
+        Select-Object -ExpandProperty Count
+
+    $fileCount
+}
