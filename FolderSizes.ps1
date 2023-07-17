@@ -1,4 +1,4 @@
-# Function to calculate folder size
+Function to calculate folder size
 function Get-FolderSize {
     param (
         [Parameter(Mandatory = $true, Position = 0)]
@@ -55,3 +55,8 @@ function Get-FileCount {
 
     $fileCount
 }
+
+# Output the Data to a CSV file
+Get-FolderSizes -RootPath $rootPath | Out-File -FilePath "C:\FolderSizes.csv"
+Get-FileCount -Path $rootPath | Out-File -FilePath "C:\FileCount.csv"
+```
